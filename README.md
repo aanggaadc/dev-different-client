@@ -1,4 +1,4 @@
-# Frontend Documentation
+# Image Upload (Frontend) Documentation
 
 ## Overview
 This is an Angular 19 frontend application that allows users to upload images and retrieve them from a backend server. The application consists of a simple form for uploading images and a gallery to display uploaded images.
