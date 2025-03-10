@@ -1,59 +1,89 @@
-# Client
+# Frontend Documentation
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+## Overview
+This is an Angular 19 frontend application that allows users to upload images and retrieve them from a backend server. The application consists of a simple form for uploading images and a gallery to display uploaded images.
 
-## Development server
+## Prerequisites
+Before running the application, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Angular CLI](https://angular.io/cli)
+- A running backend server (configured separately)
 
-To start a local development server, run:
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/aanggaadc/dev-different-client.git
+   cd dev-different-client
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-```bash
+## Configuration
+The API URL is managed using Angular environments. Update `src/environments/environment.ts` with the correct backend URL:
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:5000',
+};
+```
+
+## Project Structure
+```
+frontend/
+│── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── image-upload/
+│   │   ├── services/
+│   │   │   ├── image.service.ts
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│── environments/
+│── assets/
+```
+
+## Usage
+### Running the Application
+Start the development server:
+```sh
 ng serve
 ```
+The application will be accessible at `http://localhost:4200/`.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Uploading an Image
+1. Click the **Choose File** button.
+2. Select an image file from your computer.
+3. Click the **Upload** button to send the image to the backend.
 
-## Code scaffolding
+### Viewing Uploaded Images
+- The uploaded images will be displayed after upload process success.
+- Each image is fetched from the backend dynamically.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Components
+### Image Upload Component (`image-upload`)
+Handles image selection and upload functionality.
+#### Methods:
+- `onFileSelected(event: Event)`: Handles file selection.
+- `uploadImage()`: Sends the image to the backend.
 
-```bash
-ng generate component component-name
-```
+### Image Gallery Component (`image-gallery`)
+Displays uploaded images.
+#### Methods:
+- `fetchImages()`: Retrieves images from the backend and displays them.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Service
+### ImageService (`image.service.ts`)
+Handles HTTP requests to interact with the backend.
+#### Methods:
+- `uploadImage(image: File)`: Uploads an image.
+- `getImages()`: Retrieves all images.
 
-```bash
-ng generate --help
-```
+## Deployment
+1. Build the project:
+   ```sh
+   ng build --configuration=production
+   ```
+2. The build output will be in `dist/`. Deploy it to a web server.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
